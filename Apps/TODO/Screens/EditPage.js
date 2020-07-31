@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View , TouchableOpacity, Keyboard,TouchableWithoutFeedback,ScrollView} from 'react-native';
+import { StyleSheet, Text, View , TouchableOpacity, Keyboard,TouchableWithoutFeedback,ScrollView,Alert} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {Form , Item , Input, Label,Button} from 'native-base'
+import {Form , Item , Input, Label,Button,Icon} from 'native-base'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 
 export default class EditContactScreen extends React.Component {
@@ -63,6 +63,8 @@ export default class EditContactScreen extends React.Component {
       .catch(error=>{
         console.log(error)
       })
+    }else{
+      Alert.alert("Please fill the Task field !")
     }
   }
   
@@ -90,11 +92,12 @@ export default class EditContactScreen extends React.Component {
     <ScrollView style={styles.container}>
       <Form>
         <Item style={styles.inputItem}>
-          <Label style={styles.labelStyle}>Todo : </Label>
+        <Icon type="FontAwesome" name='tasks' style={{fontSize:25,color:'red'}}/>
+          <Label style={styles.labelStyle}>Task * : </Label>
             <Input
               // style={styles.inputStyle}
               autoCorrect={false}
-              autoCapitalize="none"
+              autoCapitalize="sentences"
               keyboardType="default"
               onChangeText={
                 todo=>this.setState({
@@ -107,6 +110,7 @@ export default class EditContactScreen extends React.Component {
             />
         </Item>
         <Item style={styles.inputItem}>
+        <Icon type="FontAwesome" name='calendar-times-o' style={{fontSize:25,color:'green'}}/>
           <Label style={styles.labelStyle}>Date/Time : </Label>
           <TouchableOpacity
             style={styles.touchanleOpastyle}
@@ -123,12 +127,14 @@ export default class EditContactScreen extends React.Component {
           
         </Item>
         <Item style={styles.inputItem}>
+        <Icon type="FontAwesome" name='list-alt' style={{fontSize:25,color:'green'}}/>
           <Label style={styles.labelStyle}>Description  : </Label>
             <Input
             placeholder="Add Description here"
               autoCorrect={false}
-              autoCapitalize="none"
+              autoCapitalize="sentences"
               keyboardType="default"
+              multiline={true}
               onChangeText={
                 desc=>this.setState({
                   desc

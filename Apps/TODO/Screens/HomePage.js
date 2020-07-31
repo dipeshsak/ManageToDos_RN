@@ -11,7 +11,7 @@ export default class HomePage extends Component {
         completedTodosCount:0
     }
     static navigationOptions = {
-    title:"ToDo List"
+    title:"Manage ToDos"
   }
   componentDidMount(){
     

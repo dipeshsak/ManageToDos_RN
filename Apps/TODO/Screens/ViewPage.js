@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View,ScrollView,TouchableOpacity,Alert} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Card,CardItem} from 'native-base'
+import { Card,CardItem,Icon} from 'native-base'
 import Entypo  from 'react-native-vector-icons/Entypo';
 export default class ViewPage extends React.Component {
   state={
@@ -66,6 +66,8 @@ export default class ViewPage extends React.Component {
     )
   }
   completedTodoHandler= async key =>{
+
+
     this.setState({
       completed: !this.state.completed
     })
@@ -93,8 +95,9 @@ export default class ViewPage extends React.Component {
     <View style={styles.infoContainer}>
     <Card>
           <CardItem bordered>
+          <Icon type="FontAwesome" name='tasks' style={{fontSize:25,color:'red'}}/>
              <Text style={styles.infoText}>
-               Todo
+               Task
              </Text>
           </CardItem>
           <CardItem bordered>
@@ -106,6 +109,22 @@ export default class ViewPage extends React.Component {
 
         <Card>
           <CardItem bordered>
+          <Icon type="FontAwesome" name='calendar-times-o' style={{fontSize:25,color:'green'}}/>
+             <Text style={styles.infoText}>
+               Date
+             </Text>
+          </CardItem>
+          <CardItem bordered>
+             <Text style={styles.infoTextVal}>
+               {this.state.date ? this.state.date : "  --"}
+             </Text>
+          </CardItem>
+        </Card>
+        
+        
+        <Card>
+          <CardItem bordered>
+          <Icon type="FontAwesome" name='clock-o' style={{fontSize:25,color:'green'}}/>
              <Text style={styles.infoText}>
                Time
              </Text>
@@ -117,21 +136,11 @@ export default class ViewPage extends React.Component {
           </CardItem>
         </Card>
 
-        <Card>
-          <CardItem bordered>
-             <Text style={styles.infoText}>
-               Date
-             </Text>
-          </CardItem>
-          <CardItem bordered>
-             <Text style={styles.infoTextVal}>
-               {this.state.date ? this.state.date : "  --"}
-             </Text>
-          </CardItem>
-        </Card>
+        
 
         <Card>
           <CardItem bordered>
+          <Icon type="FontAwesome" name='list-alt' style={{fontSize:25,color:'green'}}/>
              <Text style={styles.infoText}>
                Description
              </Text>
@@ -154,8 +163,9 @@ export default class ViewPage extends React.Component {
            <Entypo  
              name="edit"
              size={40}
-             color="teal"
+             color="orange"
            />
+           <Text>Edit</Text>
          </TouchableOpacity>
        </CardItem>
        
@@ -170,6 +180,7 @@ export default class ViewPage extends React.Component {
              size={40}
              color={this.state.completed ? "green":"#DFAF2B"} 
            />
+           <Text>{this.state.completed?"Completed":"Complete"}</Text>
          </TouchableOpacity>
        </CardItem>
 
@@ -184,6 +195,7 @@ export default class ViewPage extends React.Component {
              size={40}
              color="red"
            />
+           <Text>Delete</Text>
          </TouchableOpacity>
        </CardItem>
 
