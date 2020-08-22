@@ -93,7 +93,7 @@ export default class EditContactScreen extends React.Component {
       <Form>
         <Item style={styles.inputItem}>
         <Icon type="FontAwesome" name='tasks' style={{fontSize:25,color:'red'}}/>
-          <Label style={styles.labelStyle}>Task * : </Label>
+          {/* <Label style={styles.labelStyle}>Task * : </Label> */}
             <Input
               // style={styles.inputStyle}
               autoCorrect={false}
@@ -111,7 +111,7 @@ export default class EditContactScreen extends React.Component {
         </Item>
         <Item style={styles.inputItem}>
         <Icon type="FontAwesome" name='calendar-times-o' style={{fontSize:25,color:'green'}}/>
-          <Label style={styles.labelStyle}>Date/Time : </Label>
+          {/* <Label style={styles.labelStyle}>Date/Time : </Label> */}
           <TouchableOpacity
             style={styles.touchanleOpastyle}
             onPress={this.onPressButton}
@@ -128,7 +128,7 @@ export default class EditContactScreen extends React.Component {
         </Item>
         <Item style={styles.inputItem}>
         <Icon type="FontAwesome" name='list-alt' style={{fontSize:25,color:'green'}}/>
-          <Label style={styles.labelStyle}>Description  : </Label>
+          {/* <Label style={styles.labelStyle}>Description  : </Label> */}
             <Input
             placeholder="Add Description here"
               autoCorrect={false}
