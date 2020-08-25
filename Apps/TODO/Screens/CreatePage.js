@@ -76,7 +76,7 @@ export default class AddNewContactScreen extends React.Component {
         <Item style={styles.inputItem}>
           <Icon type="FontAwesome" name='tasks' style={{fontSize:25,color:'red'}}/>
         {/* <Icon active name='task' /> */}
-          <Label style={styles.labelStyle}>Task * : </Label>
+          {/* <Label style={styles.labelStyle}>Task * : </Label> */}
           <Input 
            autoCorrect={false}
            autoCapitalize="sentences"
@@ -87,7 +87,7 @@ export default class AddNewContactScreen extends React.Component {
         </Item>
         <Item style={styles.inputItem}>
         <Icon type="FontAwesome" name='calendar-times-o' style={{fontSize:25,color:'green'}}/>
-          <Label style={styles.labelStyle}>Date/Time : </Label>
+          {/* <Label style={styles.labelStyle}>Date/Time : </Label> */}
             <TouchableOpacity
             style={styles.touchanleOpastyle}
             onPress={this.onPressButton}
@@ -103,7 +103,7 @@ export default class AddNewContactScreen extends React.Component {
         </Item>
         <Item style={styles.inputItem}>
         <Icon type="FontAwesome" name='list-alt' style={{fontSize:25,color:'green'}}/>
-          <Label style={styles.labelStyle}>Description : </Label>
+          {/* <Label style={styles.labelStyle}>Description : </Label> */}
           <Input 
            autoCorrect={false}
            autoCapitalize="sentences"
