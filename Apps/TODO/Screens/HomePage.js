@@ -7,8 +7,12 @@ import { Card } from 'native-base';
 export default class HomePage extends Component {
     state={
         data:[],
+        backupData:[],
         pendingTodosCount:0,
-        completedTodosCount:0
+        completedTodosCount:0,
+        totalCount:0,
+        completedBtnClicked:false,
+        pendingBtnClicked:false
     }
     static navigationOptions = {
     title:"Manage ToDos"
@@ -31,7 +35,8 @@ export default class HomePage extends Component {
       .then(
         result=>{
           this.setState({
-            data:result
+            data:result.reverse(),
+            backupData:result
           })
         }
       )
@@ -58,9 +63,45 @@ export default class HomePage extends Component {
 
   this.setState({
     pendingTodosCount:pendingCount,
-    completedTodosCount:this.state.data.length - pendingCount
+    completedTodosCount:this.state.data.length - pendingCount,
   })
 
+  }
+
+  filterHandlerTotal=()=>{
+    let AllData=this.state.data;
+    AllData=AllData.filter(x =>JSON.parse(x[1]).completed === false || JSON.parse(x[1]).completed === true)
+    this.setState({
+      backupData:AllData
+    })
+  }
+  filterHandlerPending=()=>{
+    
+    let AllData=this.state.data;
+    AllData=AllData.filter(x =>JSON.parse(x[1]).completed === false)
+    console.log(AllData)
+    this.setState({
+      backupData:AllData,
+      pendingBtnClicked:true,
+      completedBtnClicked:false,
+    })
+    
+  }
+  filterHandlerCompleted=()=>{
+    let AllData=this.state.data;
+    AllData=AllData.filter(x =>JSON.parse(x[1]).completed === true)
+    console.log(AllData)
+    this.setState({
+      backupData:AllData,
+      completedBtnClicked:true,
+      pendingBtnClicked:false
+    })
+  }
+
+  noTodosFound =()=>{
+    return(
+    <View style={styles.noTodoFoundView}><Text style={styles.noTodoFound}>No Todos Found !</Text></View>
+    )
   }
     render() {
         
@@ -68,24 +109,28 @@ export default class HomePage extends Component {
             <View style={styles.container}>
                 <View style={styles.box1}>
                     <View style={styles.summaryBox}>
-                       <View style={styles.totalTODO}>
+                       <TouchableOpacity style={styles.totalTODO} onPress={this.filterHandlerTotal}>
                            <Text style={styles.TODOVal}>{this.state.data.length}</Text>
                            <Text style={styles.TODOText}>Total</Text>
-                        </View>
-                       <View style={styles.pendingTODO}>
+                        </TouchableOpacity>
+                       <TouchableOpacity style={styles.pendingTODO} onPress={this.filterHandlerPending}>
                            <Text style={styles.TODOValPen}>{this.state.pendingTodosCount}</Text>
                            <Text style={styles.TODOText}>Pending</Text>
-                       </View>
-                       <View style={styles.doneTODO}>
+                       </TouchableOpacity>
+                       <TouchableOpacity style={styles.doneTODO} onPress={this.filterHandlerCompleted}>
                            <Text style={styles.TODOValComp}>{this.state.completedTodosCount}</Text>
                            <Text style={styles.TODOText}>Completed</Text>
-                       </View>
+                       </TouchableOpacity>
                     </View>
                 </View>
-               {this.state.data.length >=1 ?
+               {/* {this.state.completedTodosCount ===0 && this.state.completedBtnClicked ? this.noTodosFound():null} */}
+               {this.state.data.length ==0  || 
+               (this.state.pendingTodosCount === 0 && this.state.pendingBtnClicked) ||
+               (this.state.completedTodosCount === 0 && this.state.completedBtnClicked)
+               ? this.noTodosFound():
                 <View style={styles.box2}>
                     <FlatList 
-                     data={this.state.data}
+                     data={this.state.backupData}
                      renderItem={( {item} ) => {
                         let singleTodo=JSON.parse(item[1]);
                      return (
@@ -119,7 +164,9 @@ export default class HomePage extends Component {
                 keyExtractor={(item,index)=>index.toString()}
                 />
                 </View>
-                 : <View style={styles.noTodoFoundView}><Text style={styles.noTodoFound}>No Todos Found !</Text></View> }        
+                }  
+
+            
                 <TouchableOpacity
                        style={styles.floatButton}
                       onPress={()=>{
