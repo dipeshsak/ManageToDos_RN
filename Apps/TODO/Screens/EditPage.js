@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {Form , Item , Input, Label,Button,Icon} from 'native-base'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import PushNotification from "react-native-push-notification";
-
+import moment from 'moment';
 export default class EditContactScreen extends React.Component {
   state={
     time:"",
@@ -13,6 +13,7 @@ export default class EditContactScreen extends React.Component {
     DTPVisibility:false,
     selectedVal:"Select Date/Time",
     key:"",
+    schTime:''
 
   }
   static navigationOptions = {
@@ -38,8 +39,8 @@ export default class EditContactScreen extends React.Component {
     });
     PushNotification.localNotificationSchedule({
       //... You can use all the options from localNotifications
-      message: "First Noti Edit Page", // (required)
-      date: new Date(Date.now() + 10 * 1000) // in 60 secs
+      message: "From Edit Page", // (required)
+      date: new Date(Date.now()+this.state.schTime * 1000),
     });
   }
   componentDidMount(){
@@ -90,6 +91,9 @@ export default class EditContactScreen extends React.Component {
     }else{
       Alert.alert("Please fill the Task field !")
     }
+    this.setState({
+      schTime:moment(this.state.selectedVal).unix() - moment().unix()
+    })
     this.PushLocalScheduleNotifications()
   }
   

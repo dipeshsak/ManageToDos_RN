@@ -4,7 +4,7 @@ import { Form, Item,Input,Label,Button,Icon } from 'native-base'
 import AsyncStorage from '@react-native-community/async-storage'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import PushNotification from "react-native-push-notification";
-
+import moment from 'moment';
 export default class AddNewContactScreen extends React.Component {
 
   state={
@@ -15,6 +15,7 @@ export default class AddNewContactScreen extends React.Component {
     DTPVisibility:false,
     selectedVal:"Select Date/Time",
     completed:false,
+    schTime:''
   }
   
 
@@ -42,8 +43,8 @@ export default class AddNewContactScreen extends React.Component {
     });
     PushNotification.localNotificationSchedule({
       //... You can use all the options from localNotifications
-      message: "First Noti Create Manage todos", // (required)
-      date: new Date(Date.now() + 20 * 1000) // in 60 secs
+      message: "From Create Page", // (required)
+      date: new Date(Date.now()+this.state.schTime * 1000), // in 60 secs
     });
   }
 
@@ -70,10 +71,19 @@ export default class AddNewContactScreen extends React.Component {
       .catch(error =>{
         console.log(error)
       })
+      // console.log("Time from Create page",moment(this.state.selectedVal).valueOf())
+      // console.log("Current Time from Create page",moment().unix())
+      // console.log("Difference",moment(this.state.selectedVal).unix() - moment().unix())
+      // console.log("Date now",Date.now())
     }
     else{
       Alert.alert("Please fill the Task field !")
     }
+
+    this.setState({
+      schTime:moment(this.state.selectedVal).unix() - moment().unix()
+    })
+   // console.log("********************** Diff Time",this.state.schTime)
     this.PushLocalScheduleNotifications();
   }
   handleConfirm =(date)=>{
