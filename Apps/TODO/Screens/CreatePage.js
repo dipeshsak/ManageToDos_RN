@@ -3,8 +3,10 @@ import { StyleSheet, Text, View,Keyboard,Alert,TouchableWithoutFeedback,Touchabl
 import { Form, Item,Input,Label,Button,Icon } from 'native-base'
 import AsyncStorage from '@react-native-community/async-storage'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
+import PushNotification from "react-native-push-notification";
 
 export default class AddNewContactScreen extends React.Component {
+
   state={
     time:"",
     todo:"",
@@ -14,8 +16,35 @@ export default class AddNewContactScreen extends React.Component {
     selectedVal:"Select Date/Time",
     completed:false,
   }
+  
+
   static navigationOptions = {
     title:"Add ToDo"
+  }
+
+  PushLocalScheduleNotifications=()=>{
+    PushNotification.configure({
+      onRegister: function(token) {
+        console.log("TOKEN:", token);
+      },
+      // onNotification: function(notification) {
+      //   console.log("NOTIFICATION:", notification);
+      //   notification.finish(PushNotificationIOS.FetchResult.NoData);
+      // },
+     
+      permissions: {
+        alert: true,
+        badge: true,
+        sound: true
+      },
+      popInitialNotification: true,
+      requestPermissions: true
+    });
+    PushNotification.localNotificationSchedule({
+      //... You can use all the options from localNotifications
+      message: "First Noti Create Manage todos", // (required)
+      date: new Date(Date.now() + 20 * 1000) // in 60 secs
+    });
   }
 
   saveToDo = async() =>{
@@ -45,6 +74,7 @@ export default class AddNewContactScreen extends React.Component {
     else{
       Alert.alert("Please fill the Task field !")
     }
+    this.PushLocalScheduleNotifications();
   }
   handleConfirm =(date)=>{
      this.setState({
@@ -98,6 +128,7 @@ export default class AddNewContactScreen extends React.Component {
             isVisible={this.state.DTPVisibility}
             onConfirm={this.handleConfirm}
             onCancel={this.onPressCancel}
+            minimumDate={new Date()}
             mode="datetime"
           />
         </Item>

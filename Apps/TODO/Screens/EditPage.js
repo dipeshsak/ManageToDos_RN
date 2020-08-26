@@ -3,6 +3,7 @@ import { StyleSheet, Text, View , TouchableOpacity, Keyboard,TouchableWithoutFee
 import AsyncStorage from '@react-native-community/async-storage';
 import {Form , Item , Input, Label,Button,Icon} from 'native-base'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
+import PushNotification from "react-native-push-notification";
 
 export default class EditContactScreen extends React.Component {
   state={
@@ -17,7 +18,30 @@ export default class EditContactScreen extends React.Component {
   static navigationOptions = {
     title:" Edit Todo"
   }
-
+  PushLocalScheduleNotifications=()=>{
+    PushNotification.configure({
+      onRegister: function(token) {
+        console.log("TOKEN:", token);
+      },
+      // onNotification: function(notification) {
+      //   console.log("NOTIFICATION:", notification);
+      //   notification.finish(PushNotificationIOS.FetchResult.NoData);
+      // },
+     
+      permissions: {
+        alert: true,
+        badge: true,
+        sound: true
+      },
+      popInitialNotification: true,
+      requestPermissions: true
+    });
+    PushNotification.localNotificationSchedule({
+      //... You can use all the options from localNotifications
+      message: "First Noti Edit Page", // (required)
+      date: new Date(Date.now() + 10 * 1000) // in 60 secs
+    });
+  }
   componentDidMount(){
     const {navigation} =this.props;
     navigation.addListener("willFocus",()=>{
@@ -66,6 +90,7 @@ export default class EditContactScreen extends React.Component {
     }else{
       Alert.alert("Please fill the Task field !")
     }
+    this.PushLocalScheduleNotifications()
   }
   
   handleConfirm =(date)=>{
@@ -122,6 +147,7 @@ export default class EditContactScreen extends React.Component {
             isVisible={this.state.DTPVisibility}
             onConfirm={this.handleConfirm}
             onCancel={this.onPressCancel}
+            minimumDate={new Date()}
             mode="datetime"
           />
           
