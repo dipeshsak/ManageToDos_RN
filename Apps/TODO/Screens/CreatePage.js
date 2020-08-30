@@ -43,9 +43,15 @@ export default class AddNewContactScreen extends React.Component {
     });
     PushNotification.localNotificationSchedule({
       //... You can use all the options from localNotifications
-      message: "From Create Page", // (required)
-      date: new Date(Date.now()+this.state.schTime * 1000), // in 60 secs
+      id:'1',
+     // message: "Notification For "+this.state.todo, // (required)
+     message: "A Minute Left for - "+this.state.todo, // (required)
+      date: new Date(Date.now()+((this.state.schTime * 1000)-(60*1000))), // in 60 secs
+      color:'teal',
+     // bigText:this.state.todo,
+      smallIcon:"ic_notification"
     });
+
   }
 
   saveToDo = async() =>{
@@ -84,8 +90,10 @@ export default class AddNewContactScreen extends React.Component {
       schTime:moment(this.state.selectedVal).unix() - moment().unix()
     })
    // console.log("********************** Diff Time",this.state.schTime)
+   if(this.state.time){
     this.PushLocalScheduleNotifications();
   }
+}
   handleConfirm =(date)=>{
      this.setState({
        selectedVal:date.toString(),

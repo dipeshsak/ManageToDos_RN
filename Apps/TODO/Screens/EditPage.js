@@ -39,9 +39,15 @@ export default class EditContactScreen extends React.Component {
     });
     PushNotification.localNotificationSchedule({
       //... You can use all the options from localNotifications
-      message: "From Edit Page", // (required)
-      date: new Date(Date.now()+this.state.schTime * 1000),
+      id:'2',
+      message: "A Minute Left for - "+this.state.todo, // (required)
+      date: new Date(Date.now()+((this.state.schTime * 1000)-(60*1000))),
+      color:'teal',
+     // bigText:this.state.todo,
+      smallIcon:"ic_notification"
     });
+    
+    PushNotification.cancelLocalNotifications({id:'1'})
   }
   componentDidMount(){
     const {navigation} =this.props;
@@ -94,7 +100,9 @@ export default class EditContactScreen extends React.Component {
     this.setState({
       schTime:moment(this.state.selectedVal).unix() - moment().unix()
     })
-    this.PushLocalScheduleNotifications()
+    if(this.state.time){
+      this.PushLocalScheduleNotifications();
+    }
   }
   
   handleConfirm =(date)=>{
