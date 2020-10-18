@@ -96,13 +96,11 @@ export default class ViewPage extends React.Component {
     <Card>
           <CardItem bordered>
           <Icon type="FontAwesome" name='tasks' style={{fontSize:25,color:'red'}}/>
-             <Text style={styles.infoText}>
-               Task
-             </Text>
+             <Text style={styles.infoText}>Task </Text>
           </CardItem>
           <CardItem bordered>
              <Text style={styles.infoTextVal}>
-               {this.state.todo}
+               {this.state.todo + "  "}
              </Text>
           </CardItem>
         </Card>
@@ -110,13 +108,11 @@ export default class ViewPage extends React.Component {
         <Card>
           <CardItem bordered>
           <Icon type="FontAwesome" name='calendar-times-o' style={{fontSize:25,color:'green'}}/>
-             <Text style={styles.infoText}>
-               Date
-             </Text>
+             <Text style={styles.infoText}>Date </Text>
           </CardItem>
           <CardItem bordered>
              <Text style={styles.infoTextVal}>
-               {this.state.date ? this.state.date : "  --"}
+               {this.state.date ? this.state.date + " " : "  -- "}
              </Text>
           </CardItem>
         </Card>
@@ -125,13 +121,11 @@ export default class ViewPage extends React.Component {
         <Card>
           <CardItem bordered>
           <Icon type="FontAwesome" name='clock-o' style={{fontSize:25,color:'green'}}/>
-             <Text style={styles.infoText}>
-               Time
-             </Text>
+             <Text style={styles.infoText}>Time </Text>
           </CardItem>
           <CardItem bordered>
              <Text style={styles.infoTextVal}>
-               {this.state.time ? this.state.time : "  --"}
+               {this.state.time ? this.state.time + " ": "  -- "}
              </Text>
           </CardItem>
         </Card>
@@ -141,13 +135,11 @@ export default class ViewPage extends React.Component {
         <Card>
           <CardItem bordered>
           <Icon type="FontAwesome" name='list-alt' style={{fontSize:25,color:'green'}}/>
-             <Text style={styles.infoText}>
-               Description
-             </Text>
+             <Text style={styles.infoText}>Description  </Text>
           </CardItem>
           <CardItem bordered>
              <Text style={styles.infoTextVal}>
-               {this.state.desc ? this.state.desc :"  --"}
+               {this.state.desc ? this.state.desc+" " :"  -- "}
              </Text>
           </CardItem>
         </Card>
@@ -214,6 +206,8 @@ const styles = StyleSheet.create({
   infoText: {
     fontSize: 18,
     color:"black",
+    alignSelf:"stretch",
+    textAlign:"center",
     fontWeight:'bold'
   },
   infoTextVal: {

@@ -190,7 +190,7 @@ export default class EditContactScreen extends React.Component {
       rounded
       onPress={()=>this.updateTodo(this.state.key)}
       style={styles.button}
-      ><Text style={styles.buttonText}>Update</Text></Button>
+      ><Text style={styles.buttonText}>Save  </Text></Button>
       <View style={styles.scrollview}></View>
     </ScrollView>
     </TouchableWithoutFeedback>
@@ -213,6 +213,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
+    // alignSelf:"stretch",
+    // textAlign:"center",
     fontWeight: "bold"
   },
   scrollview:{

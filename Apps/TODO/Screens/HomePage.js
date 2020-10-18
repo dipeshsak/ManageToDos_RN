@@ -110,16 +110,16 @@ export default class HomePage extends Component {
                 <View style={styles.box1}>
                     <View style={styles.summaryBox}>
                        <TouchableOpacity style={styles.totalTODO} onPress={this.filterHandlerTotal}>
-                           <Text style={styles.TODOVal}>{this.state.data.length}</Text>
-                           <Text style={styles.TODOText}>Total</Text>
+                           <Text style={styles.TODOVal}>{this.state.data.length + " "}</Text>
+                           <Text style={styles.TODOText}>Total </Text>
                         </TouchableOpacity>
                        <TouchableOpacity style={styles.pendingTODO} onPress={this.filterHandlerPending}>
-                           <Text style={styles.TODOValPen}>{this.state.pendingTodosCount}</Text>
-                           <Text style={styles.TODOText}>Pending</Text>
+                           <Text style={styles.TODOValPen}>{this.state.pendingTodosCount + " "}</Text>
+                           <Text style={styles.TODOText}>Pending </Text>
                        </TouchableOpacity>
                        <TouchableOpacity style={styles.doneTODO} onPress={this.filterHandlerCompleted}>
-                           <Text style={styles.TODOValComp}>{this.state.completedTodosCount}</Text>
-                           <Text style={styles.TODOText}>Completed</Text>
+                           <Text style={styles.TODOValComp}>{this.state.completedTodosCount+ " "}</Text>
+                           <Text style={styles.TODOText}>Completed </Text>
                        </TouchableOpacity>
                     </View>
                 </View>
@@ -230,6 +230,8 @@ const styles = StyleSheet.create({
         fontWeight:'bold'
     },
     TODOText:{
+          alignSelf:"stretch",
+          textAlign:"center",
         fontWeight:'bold'
     },
     TODOValPen:{

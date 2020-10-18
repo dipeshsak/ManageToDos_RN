@@ -172,9 +172,7 @@ export default class AddNewContactScreen extends React.Component {
         }
       }
       >
-        <Text style={styles.buttonText}>
-        Save
-        </Text>
+        <Text style={styles.buttonText}>Save </Text>
         </Button>
     </View>
     </TouchableWithoutFeedback>
