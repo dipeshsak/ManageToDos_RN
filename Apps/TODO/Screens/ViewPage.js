@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,ScrollView,TouchableOpacity,Alert} from 'react-n
 import AsyncStorage from '@react-native-community/async-storage';
 import { Card,CardItem,Icon} from 'native-base'
 import Entypo  from 'react-native-vector-icons/Entypo';
+import  { BannerAd, TestIds, BannerAdSize } from "@react-native-firebase/admob"
 export default class ViewPage extends React.Component {
   state={
     time:"",
@@ -144,7 +145,11 @@ export default class ViewPage extends React.Component {
           </CardItem>
         </Card>
     </View>
-    
+
+    <BannerAd 
+      size={BannerAdSize.SMART_BANNER}
+      unitId="ca-app-pub-2344721204559110/2729085052"/>
+
      <Card style={styles.actionContainer}>
        <CardItem style={styles.actionButton} bordered>
          <TouchableOpacity

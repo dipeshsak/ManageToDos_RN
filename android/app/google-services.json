@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "662991482837",
+    "firebase_url": "https://managetodos-admob.firebaseio.com",
+    "project_id": "managetodos-admob",
+    "storage_bucket": "managetodos-admob.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662991482837:android:11ce8029111084306d575c",
+        "android_client_info": {
+          "package_name": "com.amazinginventos.managetodos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662991482837-vlikd7qm3piopab8d5d9hope1i5r0pbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpgOy5ii5ADpumB-SpcKYEMUICqwg5M8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662991482837-vlikd7qm3piopab8d5d9hope1i5r0pbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

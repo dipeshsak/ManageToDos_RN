@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import PushNotification from "react-native-push-notification";
 import moment from 'moment';
+import  { BannerAd, TestIds, BannerAdSize } from "@react-native-firebase/admob"
 export default class AddNewContactScreen extends React.Component {
 
   state={
@@ -163,6 +164,9 @@ export default class AddNewContactScreen extends React.Component {
           />
         </Item>  
       </Form>
+      <BannerAd 
+      size={BannerAdSize.SMART_BANNER}
+      unitId="ca-app-pub-2344721204559110/2729085052"/>
       <Button 
       style={styles.button}
       full

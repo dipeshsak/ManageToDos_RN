@@ -5,6 +5,7 @@ import {Form , Item , Input, Label,Button,Icon} from 'native-base'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import PushNotification from "react-native-push-notification";
 import moment from 'moment';
+import  { BannerAd, TestIds, BannerAdSize } from "@react-native-firebase/admob"
 export default class EditContactScreen extends React.Component {
   state={
     time:"",
@@ -184,7 +185,11 @@ export default class EditContactScreen extends React.Component {
             />
         </Item>
       </Form>
-      
+
+      <BannerAd 
+      size={BannerAdSize.SMART_BANNER}
+      unitId="ca-app-pub-2344721204559110/2729085052"/>
+
       <Button
       full
       rounded
