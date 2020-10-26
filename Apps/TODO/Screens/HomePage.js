@@ -14,9 +14,9 @@ export default class HomePage extends Component {
         completedBtnClicked:false,
         pendingBtnClicked:false
     }
-    static navigationOptions = {
-    title:"Manage ToDos"
-  }
+  //   static navigationOptions = {
+  //   title:"Manage ToDos"
+  // }
   componentDidMount(){
     
     const { navigation } =this.props;

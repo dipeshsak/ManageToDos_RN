@@ -1,12 +1,17 @@
 import React,{useEffect} from 'react';
 import { StyleSheet,View,StatusBar } from 'react-native';
 
-import NavigationRoute from "./NavigationRoute";
+import NavigationRoute from "./Routes/NavigationRoute";
 import SplashScreen from 'react-native-splash-screen'
 import admob, { MaxAdContentRating, BannerAd, TestIds, BannerAdSize } from "@react-native-firebase/admob"
+import PushNotification from "react-native-push-notification";
+
 export default function App() {
   useEffect(()=>{
     SplashScreen.hide()
+
+    PushLocalScheduleNotifications()
+    
     admob()
       .setRequestConfiguration({
         // Update all future requests suitable for parental guidance
@@ -25,10 +30,39 @@ export default function App() {
 
 
   },[])
+
+  PushLocalScheduleNotifications=()=>{
+    PushNotification.configure({
+      onRegister: function(token) {
+        console.log("TOKEN:", token);
+      },
+     
+      permissions: {
+        alert: true,
+        badge: true,
+        sound: true
+      },
+      popInitialNotification: true,
+      requestPermissions: true
+    });
+    PushNotification.localNotificationSchedule({
+      id:'11', 
+      message: "Never miss anything with Manage ToDos, add Task now !", // (required)
+      color:'teal',
+      // smallIcon:"ic_notification",
+      // largeIcon:"ic_launcher",
+      //repeatTime:"300000" //7200000 for 2 hrs
+      repeatType:"time",
+      repeatTime:7200000,
+      date: new Date(Date.now()+300000), // in 180 secs
+    });
+    console.log("APP . js code for notification")
+  }
   return (
     <View style={styles.container}>
+       {/* <StatusBar barStyle="default" hidden={false} backgroundColor="#00a08c" translucent={false}/> */}
+       <NavigationRoute />
        <StatusBar barStyle="default" hidden={false} backgroundColor="#00a08c" translucent={false}/>
-       <NavigationRoute style={styles.container}/>
       </View>
   );
 }
