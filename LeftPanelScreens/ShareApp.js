@@ -24,7 +24,7 @@ class ShareApp extends React.Component {
             </CardItem>
             <CardItem footer bordered>
               <TouchableOpacity onPress={()=>Share.share({
-                message:"Install Manage ToDOs and don't Miss anything Important.",
+                message:"Install Manage ToDOs and don't Miss anything Important https://play.google.com/store/apps/details?id=com.amazinginventos.managetodos",
                 uri:'https://play.google.com/store/apps/details?id=com.amazinginventos.managetodos'
               })}>
               <Text style={styles.reviewText}>Share Manage ToDos</Text>
