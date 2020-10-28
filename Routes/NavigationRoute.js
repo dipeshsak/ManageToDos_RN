@@ -27,17 +27,17 @@ const CustomDrawerContentComponent =(props)=>(
 )
 const MainNavigator = createDrawerNavigator(
   {
-    Home:{screen:HomeRoute},
+    Home :{screen:HomeRoute},
     RateUs:{
       screen:LeftPanelRateUs,
       navigationOptions:{
-        title:"Give us Review"
+        title:"Give us Review "
       }
     },
     Share:{
       screen:LeftPanelShareApp,
       navigationOptions:{
-        title:"Share"
+        title:"Share "
       }
     },
     // AboutUs:{

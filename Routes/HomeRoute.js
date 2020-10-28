@@ -17,7 +17,7 @@ const HomeRoute = createStackNavigator(
         screen:TODOHomeScreen,
         navigationOptions:({navigation})=>{
             return{
-            headerTitle :()=> <HeaderPanel navigation={navigation} title="Manage ToDos"/>
+            headerTitle :()=> <HeaderPanel navigation={navigation} title="Manage ToDos "/>
             }
         }
         // navigationOptions:{

@@ -13,7 +13,7 @@ const LeftPanelShareApp = createStackNavigator(
         screen:ShareApp,
         navigationOptions:({navigation})=>{
             return{
-            headerTitle:()=> <HeaderPanel navigation={navigation} title="Share"/>
+            headerTitle:()=> <HeaderPanel navigation={navigation} title="Share "/>
             }
         }
         

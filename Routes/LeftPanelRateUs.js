@@ -13,7 +13,7 @@ const LeftPanelRateUs = createStackNavigator(
         screen:RateUs,
         navigationOptions:({navigation})=>{
             return{
-            headerTitle:()=> <HeaderPanel navigation={navigation} title="Give us Review"/>
+            headerTitle:()=> <HeaderPanel navigation={navigation} title="Give us Review "/>
             }
         }
         
