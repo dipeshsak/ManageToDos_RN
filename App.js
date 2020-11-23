@@ -54,7 +54,7 @@ export default function App() {
       //repeatTime:"300000" //7200000 for 2 hrs
       repeatType:"time",
       repeatTime:7200000,
-      date: new Date(Date.now()+300000), // in 180 secs
+      date: new Date(Date.now()+3600000), // in 180 secs
     });
     console.log("APP . js code for notification")
   }

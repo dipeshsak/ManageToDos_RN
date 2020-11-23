@@ -188,7 +188,7 @@ export default class EditContactScreen extends React.Component {
 
       <BannerAd 
       size={BannerAdSize.SMART_BANNER}
-      unitId="ca-app-pub-2344721204559110/2729085052"/>
+      unitId="ca-app-pub-9245860659796671/4701717675"/>
 
       <Button
       full

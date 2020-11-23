@@ -31,7 +31,7 @@ const MainNavigator = createDrawerNavigator(
     RateUs:{
       screen:LeftPanelRateUs,
       navigationOptions:{
-        title:"Give us Review "
+        title:"Give us Review       "
       }
     },
     Share:{

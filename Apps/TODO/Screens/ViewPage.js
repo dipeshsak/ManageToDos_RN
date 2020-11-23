@@ -148,7 +148,7 @@ export default class ViewPage extends React.Component {
 
     <BannerAd 
       size={BannerAdSize.SMART_BANNER}
-      unitId="ca-app-pub-2344721204559110/2729085052"/>
+      unitId="ca-app-pub-9245860659796671/4701717675"/>
 
      <Card style={styles.actionContainer}>
        <CardItem style={styles.actionButton} bordered>
