@@ -7,6 +7,7 @@ import HomeRoute from './HomeRoute';
 import LeftPanelAboutUs from './LeftPanelAboutUs'
 import LeftPanelRateUs from './LeftPanelRateUs'
 import LeftPanelShareApp from './LeftPanelShareApp'
+import LeftPanelQuotes from './LeftPanelQuotes'
 
 import {Container,Content,Header,Body,Icon,Text} from 'native-base'
  import {Image,Share,TouchableOpacity,Linking} from'react-native'
@@ -40,12 +41,12 @@ const MainNavigator = createDrawerNavigator(
         title:"Share "
       }
     },
-    // AboutUs:{
-    //   screen:LeftPanelAboutUs,
-    //   navigationOptions:{
-    //     title:"About Us"
-    //   }
-    // },
+    QuoteScreen:{
+      screen:LeftPanelQuotes,
+      navigationOptions:{
+        title:"Quote of the Day      "
+      }
+    },
     
   },
   {
