@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet,Dimensions,Linking,Share,View } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Text, Body, Button,Icon, Right } from "native-base";
-import  { BannerAd, TestIds, BannerAdSize ,InterstitialAd, AdEventType} from "@react-native-firebase/admob"
+import  { BannerAd, TestIds, BannerAdSize ,InterstitialAd, AdEventType} from "@react-native-firebase/admob";
+import LinearGradient from 'react-native-linear-gradient';
+
 const screenHeight=Math.round(Dimensions.get('window').height)
 
 class QuoteScreen extends React.Component {
@@ -84,12 +86,11 @@ class QuoteScreen extends React.Component {
   render(){
     const { data } = this.state;
   return (
+    <LinearGradient colors={[ '#16a085','#e55d87']} style={styles.linearGradient}>
     <Container style={styles.container}>
-        <Content padder style={{flex:1,top:screenHeight/5,backgroundColor:"#B4F4F8"}} >
+        <Content padder style={{flex:1,top:screenHeight/5}} >
           <Card style={styles.card} >
-            <CardItem header bordered>
-              {/* <Text style={styles.mtText}>Manage ToDos</Text> */}
-            </CardItem>
+           
             <CardItem bordered>
               <Body>
                 <Text style={styles.quoteText}>
@@ -106,11 +107,11 @@ class QuoteScreen extends React.Component {
               <View style={styles.btnView}>
               <Button  rounded style ={{backgroundColor:'red'}} onPress={()=>{this.getNewQuote()}}>
                   <Icon name="refresh"/>
-                  {/* <Text></Text> */}
+                  
               </Button>
               <Button  rounded style ={{backgroundColor:'green'}} onPress={()=>{this.ShareQuote()}}>
                   <Icon name="send"/>
-                  {/* <Text>Share </Text> */}
+                  
               </Button>
               </View>
             </CardItem>
@@ -124,7 +125,9 @@ class QuoteScreen extends React.Component {
       />
       
       </Container>
-    
+
+      
+    </LinearGradient>
   );
 }
 }
@@ -134,11 +137,11 @@ export default QuoteScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'skyblue',
+    backgroundColor:'transparent'
   },
   card:{
-      width:"100%",
-      height:"100%",
+      // width:"100%",
+      // height:"100%",
     justifyContent:'center',
     alignItems:'center',
     // borderRadius:15,
@@ -170,5 +173,12 @@ const styles = StyleSheet.create({
       flexDirection:"row",
       alignItems:"center",
       justifyContent:"space-around"
-  }
+  },
+  linearGradient: {
+    flex: 1,
+    width:'100%',
+    // paddingLeft: 15,
+    // paddingRight: 15,
+    //  borderRadius: 5
+  },
 });

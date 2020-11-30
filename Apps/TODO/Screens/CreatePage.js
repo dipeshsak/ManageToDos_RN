@@ -166,7 +166,9 @@ export default class AddNewContactScreen extends React.Component {
       </Form>
       <BannerAd 
       size={BannerAdSize.SMART_BANNER}
-      unitId="ca-app-pub-9245860659796671/4701717675"/>
+      unitId="ca-app-pub-9245860659796671/4701717675"
+      //unitId={TestIds.BANNER}
+      />
       <Button 
       style={styles.button}
       full
@@ -188,7 +190,7 @@ export default class AddNewContactScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     margin: 10,
     height: 500
   },

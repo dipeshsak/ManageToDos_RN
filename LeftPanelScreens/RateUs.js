@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet,Dimensions, View,Linking,Keyboard,Alert,TouchableWithoutFeedback,TouchableOpacity,ScrollView } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Text, Body } from "native-base";
+import LinearGradient from 'react-native-linear-gradient';
 
 const screenHeight=Math.round(Dimensions.get('window').height)
 
@@ -8,6 +9,7 @@ class RateUs extends React.Component {
 
   render(){
   return (
+    <LinearGradient colors={['#16a085', '#f4d03f']} style={styles.linearGradient}>
     <Container style={styles.container}>
         {/* <Header /> */}
         <Content padder style={{flex:1,top:screenHeight/5}} >
@@ -31,7 +33,7 @@ class RateUs extends React.Component {
           </Card>
         </Content>
       </Container>
-    
+      </LinearGradient>
   );
 }
 }
@@ -41,6 +43,7 @@ export default RateUs
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'transparent'
   },
   card:{
     justifyContent:'center',
@@ -58,5 +61,12 @@ const styles = StyleSheet.create({
   reviewText:{
     fontSize:20,
     textDecorationLine:'underline'
-  }
+  },
+  linearGradient: {
+    flex: 1,
+    width:'100%',
+    paddingLeft: 15,
+    paddingRight: 15,
+     borderRadius: 5
+  },
 });

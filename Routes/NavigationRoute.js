@@ -13,6 +13,7 @@ import {Container,Content,Header,Body,Icon,Text} from 'native-base'
  import {Image,Share,TouchableOpacity,Linking} from'react-native'
 import React from 'react'
 
+
 const CustomDrawerContentComponent =(props)=>(
     <Container style={{Left:50}}>
       <Header style={{height:150,backgroundColor:'white'}}>
@@ -29,6 +30,12 @@ const CustomDrawerContentComponent =(props)=>(
 const MainNavigator = createDrawerNavigator(
   {
     Home :{screen:HomeRoute},
+    QuoteScreen:{
+      screen:LeftPanelQuotes,
+      navigationOptions:{
+        title:"Quote of the Day      "
+      }
+    },
     RateUs:{
       screen:LeftPanelRateUs,
       navigationOptions:{
@@ -40,13 +47,8 @@ const MainNavigator = createDrawerNavigator(
       navigationOptions:{
         title:"Share "
       }
-    },
-    QuoteScreen:{
-      screen:LeftPanelQuotes,
-      navigationOptions:{
-        title:"Quote of the Day      "
-      }
-    },
+    }
+    
     
   },
   {

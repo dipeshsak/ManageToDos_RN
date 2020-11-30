@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet,Dimensions,Linking,TouchableOpacity,Share } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Text, Body } from "native-base";
+import LinearGradient from 'react-native-linear-gradient';
 
 const screenHeight=Math.round(Dimensions.get('window').height)
 
@@ -8,6 +9,7 @@ class ShareApp extends React.Component {
 
   render(){
   return (
+    <LinearGradient colors={[ '#16a085','#ff6e7f',]} style={styles.linearGradient}>
     <Container style={styles.container}>
         <Content padder style={{flex:1,top:screenHeight/5}} >
           <Card style={styles.card} >
@@ -33,7 +35,7 @@ class ShareApp extends React.Component {
           </Card>
         </Content>
       </Container>
-    
+      </LinearGradient>
   );
 }
 }
@@ -43,6 +45,7 @@ export default ShareApp
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'transparent'
   },
   card:{
     justifyContent:'center',
@@ -60,5 +63,12 @@ const styles = StyleSheet.create({
   reviewText:{
     fontSize:20,
     textDecorationLine:'underline'
-  }
+  },
+  linearGradient: {
+    flex: 1,
+    width:'100%',
+    paddingLeft: 15,
+    paddingRight: 15,
+     borderRadius: 5
+  },
 });
